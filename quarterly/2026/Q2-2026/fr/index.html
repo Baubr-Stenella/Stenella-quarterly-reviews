@@ -97,6 +97,32 @@ hr.r{border:none;border-top:1px solid var(--rule);margin:16px 0}
 .perf-table tr.tot td{background:var(--light);font-weight:700;border-top:2px solid var(--navy)}
 .pos{color:var(--pos)} .neg{color:var(--neg)}
 .perf-note{font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:var(--muted);font-style:italic;margin-top:4px}
+
+/* ── Print button ── */
+.btn-print{position:fixed;top:14px;right:14px;z-index:900;background:var(--navy);color:#fff;border:none;
+  padding:6px 14px;font-family:'IBM Plex Mono',monospace;font-size:10px;cursor:pointer;letter-spacing:.5px;
+  border-radius:2px;opacity:.85}
+.btn-print:hover{opacity:1}
+/* ── Print / PDF ── */
+@media print{
+  /* Hide UI chrome */
+  .btn-print,.modal-overlay,#modal{display:none!important}
+  /* Page setup */
+  @page{margin:18mm 15mm}
+  body{background:#fff!important;color:#1a1610!important;max-width:100%;padding:0;font-size:11px}
+  /* Preserve colors */
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+  /* Never cut across these blocks */
+  .fig-wrap,.perf-table,table,.epigraph,.pq,.banner,.chart-canvas-wrap{page-break-inside:avoid}
+  /* Keep label/heading glued to what follows */
+  .banner,.slabel,.fig-label{page-break-after:avoid}
+  p{orphans:3;widows:3}
+  /* Canvas sizing for print */
+  canvas{max-width:100%!important;height:auto!important}
+  .chart-canvas-wrap{height:220px!important}
+  /* HR rules */
+  hr{border-color:#c8b89a}
+}
 </style>
 </head>
 <body>
@@ -110,8 +136,9 @@ hr.r{border:none;border-top:1px solid var(--rule);margin:16px 0}
     Bertil Aubrun &middot; Stenella Partners
   </div>
 </div>
+<button class="btn-print" onclick="window.print()">&#9113; Imprimer / PDF</button>
 
-<div class="title">
+<div class="ti
   <h1>Revue trimestrielle Q2 2026</h1>
   <div class="sub">Deuxi&egrave;me trimestre 2026 &middot; Perspectives &amp; Positionnements</div>
 </div>
@@ -321,8 +348,8 @@ hr.r{border:none;border-top:1px solid var(--rule);margin:16px 0}
     <tr><td>2023</td><td class="pos">+20,2&nbsp;%</td><td class="pos">+10,3&nbsp;%</td><td class="pos">+3,5&nbsp;%</td></tr>
     <tr><td>2024</td><td class="pos">+20,6&nbsp;%</td><td class="pos">+7,1&nbsp;%</td><td class="pos">+3,9&nbsp;%</td></tr>
     <tr><td>2025</td><td class="pos">+14,0&nbsp;%</td><td class="pos">+0,5&nbsp;%</td><td class="pos">+2,4&nbsp;%</td></tr>
-    <tr><td>2026</td><td class="pos">+13,9&nbsp;%</td><td class="pos">+1,5&nbsp;%</td><td class="pos">+1,00&nbsp;%</td></tr>
-    <tr class="tot"><td>Total cumul&eacute;</td><td class="pos">+88,3&nbsp;%</td><td class="pos">+20,5&nbsp;%</td><td class="pos">+11,19&nbsp;%</td></tr>
+    <tr><td>2026</td><td class="pos">+13,9&nbsp;%</td><td class="pos">+1,5&nbsp;%</td><td class="pos">+1,0&nbsp;%</td></tr>
+    <tr class="tot"><td>Total cumul&eacute;</td><td class="pos">+88,3&nbsp;%</td><td class="pos">+20,5&nbsp;%</td><td class="pos">+11,2&nbsp;%</td></tr>
   </tbody>
 </table>
 <p class="perf-note">* Les performances pass&eacute;es ne pr&eacute;jugent pas des performances futures.</p>
